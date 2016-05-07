@@ -1,0 +1,43 @@
+
+{% extends "base.html" %}
+
+{%block heading%}
+Register
+{%endblock%}
+
+{%block logout%}
+
+{%endblock%}
+
+
+{%block content%}
+<form action="/assgn/register/" method="POST" name="register" onSubmit=valid()>
+{% csrf_token %}
+<label for="stud_id">Student ID: </label>
+<input type="text" name="uid" value="" id="stud_id"></input><br/>
+First Name: <input type="text" name="fname" /><br/>
+Last Name: <input type="text" name="lname" /><br/>
+
+<label for="password">Choose a password: </label>
+<input type="password" name="pass" value=""/><br/>
+{%for i in subjList%}
+<input type="checkbox" name="check[]" value="{{i.subj_id}}"/> {{i.subj_id}}
+{%endfor%}
+<input type="submit" value="Register" onsubmit="valid()"/>    
+</form>
+
+<script>
+	function valid(){
+		var id = document.register.uid.value;
+		if (id.length == 5){
+			return true;
+		}
+		else{
+			alert("sjgfs");
+			document.register.uid.focus();
+			return false;
+		}
+	}
+
+</script>
+{%endblock%}

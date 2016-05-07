@@ -1,0 +1,23 @@
+
+{% extends "base.html" %}
+
+{%block logout%}
+
+{%endblock%}
+
+
+{%block heading%}
+Login
+{%endblock%}
+
+{%block content%}
+<form action="/assgn/stud_auth_view/" method="POST">
+{% csrf_token %}
+<label for="stud_id">Student ID: </label>
+<input type="text" name="stud_id" value="" id="stud_id"></input>
+<br/>
+<label for="password">Password: </label>
+<input type="password" name="password" value="" id="password"></input>
+<input type="submit" value="login"/>    
+</form>
+{%endblock%}

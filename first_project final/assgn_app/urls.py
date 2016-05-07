@@ -1,0 +1,22 @@
+from django.conf.urls import url
+
+from . import views
+
+urlpatterns = [
+	url(r'^$', views.index, name='index'),
+	url(r'^stud_login/',views.stud_login),
+	#url(r'^stud_logout/',),
+	url(r'^logged_in/',views.logged_in),
+	url(r'^stud_auth_view/',views.auth_view),
+	url(r'^prof_login/',views.prof_login),
+	url(r'^register/',views.register),
+	url(r'^prof_auth_view/',views.prof_auth_view),
+	url(r'^assgn_page/',views.assgn_page),
+	url(r'^upload_assgn/',views.upload_assgn),
+	url(r'^selected_subj/',views.selected_subj),
+	url(r'^stud_submitted/',views.stud_submitted),
+	url(r'^upload_success/',views.upload_success),
+	url(r'^save_marks',views.save_marks),
+	url(r'^logout/',views.logout),
+	url(r'^reg_subj/',views.reg_subj),
+]

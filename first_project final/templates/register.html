@@ -1,0 +1,29 @@
+{%extends "base.html"%}
+{%block logout%}
+<p align="right">
+{%endblock%}
+
+{%block content%}
+      <form action="/assgn/register/" method="post" onsubmit="return valid()">
+      {% csrf_token %}
+        <h1>Register</h1>
+        
+        <fieldset>
+        <label for="stud_id">Student ID:</label>
+        <input type="number" name="uid" value="" id="stud_id" placeholder="e.g. 17351" min="10000" max="99999" required="required"></input>
+          <label for="name">First Name:</label>
+          <input type="text" id="name" name="fname" placeholder="Jane" required="required">
+
+          <label for="name">Last Name:</label>
+          <input type="text" id="name" name="lname" placeholder="Doe" required="required">
+          
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="pass" placeholder="5 to 12 chars." maxlength="12" minlength="5" required="required">
+         
+ 
+          
+        </fieldset>
+       
+        <button type="submit">Register</button>
+      </form>
+{%endblock%}

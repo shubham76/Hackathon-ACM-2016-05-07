@@ -1,0 +1,50 @@
+<!doctype html>
+<head>
+
+<title>Assignments Portal</title>
+	<!--link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css/"-->
+	<style>
+	body{
+		text-align:center;
+		background-color:LightSeaGreen;
+		color:black;
+		font-family: "Ubuntu",sans-serif;
+	}
+	.content{
+		background-color:LightGreen;
+		color:black;
+	}
+	td,th{
+		border: 1px solid black;
+		padding:10px;
+		border-collapse: collapse;
+	}
+	table{
+		margin-left:auto;
+		margin-right:auto;
+		border-collapse: collapse;
+	}
+	#logout{
+		text-align:right;
+	}	
+	</style>
+</head>
+<body>
+	{%block logout%}
+	<div id="logout">
+	<a href="/assgn/logout/"><button> <span style="font-size:18px">Log out</span></button></a>
+	</div>
+	{%endblock%}
+	
+	<h1>{%block heading%} {%endblock%}</h1>
+	<div class="content">
+	{%block content%}
+	{%endblock%}
+	</div>
+	<h2>{%block heading2%} {%endblock%}</h2>
+	<div class="content">
+	{%block content2%}
+	{%endblock%}
+	</div>
+	
+</body>

@@ -1,0 +1,36 @@
+{%extends "base.html"%}
+
+{%block heading%}
+Students who have submitted the assignment:
+{%endblock%}
+
+{%block content%}
+<!--form method="">
+{%csrf_token%}
+</form-->
+
+<table>
+<tr>
+		<th>ID</th>
+		<th>Name</th>
+		<th>Link to file</th>
+		<th>Marks</th>
+		<th>Submit</th>
+	</tr>
+{%for assgn in assgnList%}
+	<tr>
+		
+		<td>{{assgn.unique_id.unique_id}} </td>
+		<td>{{assgn.unique_id.fname}} {{assgn.unique_id.lname}}</td>
+		<td><a href="/static/{{assgn.assgn_a_file}}/"> <button> Download</button> </a></td>
+		<form action="/assgn/save_marks/" method="POST">
+		 {%csrf_token%}
+		<td ><input type="number" name="marks" value="{{assgn.marks}}"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		<input type="hidden" name="uid" value="{{assgn.unique_id.unique_id}}">
+		<td><input type="submit" value="Submit">
+		<input type="hidden" name="assgn_id" value="{{assgn.assgn_id.assgn_id}}"/>
+		</form></td>
+	</tr>
+{%endfor%}
+</table>
+{%endblock%}

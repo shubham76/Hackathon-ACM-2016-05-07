@@ -1,0 +1,65 @@
+{%extends "base.html"%}
+
+{%block heading%}
+Assignments for {{subj}} are:
+{%endblock%}
+
+
+{%block content%}
+{%if assgnList|length > 0%}
+<table>
+<tr>
+<th>Assgn ID</th>
+<th>Question Paper</th>
+<th>Due on</th>
+<th>Choose file</th>
+<th>Upload Answer</th>
+</tr>
+
+{%for assgn in assgnList%}
+<tr>
+
+<td>{{assgn.assgn_id}} </td>
+<td><a href="/static/{{assgn.assgn_q_file}}/"> <button>Download</button></a></td>
+<td><b>{{assgn.due_date}}</b></td>
+
+	<form method="POST" action="/assgn/upload_assgn/" enctype="multipart/form-data" >
+	{%csrf_token%}
+<td>	
+{{form.as_p}}
+</td>
+	<input type="hidden" name="assgn_id" value="{{assgn.assgn_id}}">
+
+<td>
+	<input type="submit" value="upload" />
+</td>
+
+</form>
+
+</tr>
+{%endfor%}
+
+</table>
+{%endif%}
+
+{%if assgnList|length == 0%}
+<h2 style="color: #9fdf9f">No pending submissions</h2>
+{%endif%}
+
+{%endblock%}
+
+{%block heading2%}
+Assignments whose due date has expired are:
+{%endblock%}
+
+{%block content2%}
+{%if assgnListExp%}
+<ol>
+{%for assgn in assgnListExp%}
+<li>{{assgn.assgn_id}} / (it was due on: {{assgn.due_date}})</li>
+{%endfor%}
+</ol>
+{%else%}
+<h3 style="color: #9fdf9f">(No such assignments as of now)</h3>
+{%endif%}
+{%endblock%}

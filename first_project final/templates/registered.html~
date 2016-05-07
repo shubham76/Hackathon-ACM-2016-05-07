@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{%block logout%}
+
+{%endblock%}
+
+
+{%block heading%}
+Select subjects
+{%endblock%}
+
+{% block content %}
+
+
+ <form action="/assgn/reg_subj/" method="post" name="reg_subj" id="odd">
+ {%csrf_token%}
+
+<table style="width:100%">
+<tr>
+<th >III Sem</th>
+<th>IV Sem</th>
+<th>V Sem</th>
+<th>VI Sem</th>
+<th>VII Sem</th>
+<th>VIII Sem</th>
+</tr>
+
+<tr>
+
+<td>
+{%for subj in subjList%}
+
+{%if subj.semester == 3%}
+<input type="checkbox" name="check[]" value="{{subj.subj_id}}" id="check"/> {{subj.subj_id}}</br>
+{%endif%}
+{%endfor%}
+</td>
+
+<td>
+{%for subj in subjList%}
+{%if subj.semester == 4%}
+<input type="checkbox" name="check[]" value="{{subj.subj_id}}" id="check"/> {{subj.subj_id}}</br>
+{%endif%}
+{%endfor%}
+</td>
+
+<td>
+{%for subj in subjList%}
+{%if subj.semester == 5%}
+<input type="checkbox" name="check[]" value="{{subj.subj_id}}" id="check"/> {{subj.subj_id}}</br>
+{%endif%}
+{%endfor%}
+</td>
+
+<td>
+{%for subj in subjList%}
+{%if subj.semester == 6%}
+<input type="checkbox" name="check[]" value="{{subj.subj_id}}" id="check"/> {{subj.subj_id}}</br>
+{%endif%}
+{%endfor%}
+</td>
+
+<td>
+{%for subj in subjList%}
+{%if subj.semester == 7%}
+<input type="checkbox" name="check[]" value="{{subj.subj_id}}" id="check"/> {{subj.subj_id}}</br>
+{%endif%}
+{%endfor%}
+</td>
+
+<td>
+{%for subj in subjList%}
+{%if subj.semester == 8%}
+<input type="checkbox" name="check[]" value="{{subj.subj_id}}" id="check"/> {{subj.subj_id}}</br>
+{%endif%}
+{%endfor%}
+</td>
+
+</tr>
+
+
+</table>
+
+<button type="submit">Register Subjects</button>
+</form>
+
+
+{%endblock%}

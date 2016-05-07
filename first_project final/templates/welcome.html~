@@ -1,0 +1,39 @@
+{%extends "base.html"%}
+
+
+{%block heading%}
+Welcome!
+{%endblock%}
+
+{%block message%}
+<h3 style="color: #9fdf9f">{%if msg%} {{msg}} {%endif%}</h3>
+{%endblock%}
+
+{%block logout%}
+<p>
+{%endblock%}
+
+{%block content%}
+
+<h2 style="color:#e6e6e6">Students</h2>
+<table>
+<tr>
+<td><a href="/assgn/stud_login/"><button> Login</button></a></td>
+<td><a href="/assgn/register/"><button> Register</button></a></td>
+</tr>
+</table>
+
+<h2 style="color:#e6e6e6">Professors</h2>
+<table>
+<tr>
+<td><a href="/assgn/prof_login/"><button> Login</button></a></td>
+</tr>
+</table>
+
+{%endblock%}
+
+{%block heading2%}
+
+{%endblock%}
+
+

@@ -1,0 +1,26 @@
+{%extends "base.html"%}
+{%block logout%}
+<p align="right">
+{%endblock%}
+
+{%block content%}
+		
+      <form action="/assgn/stud_auth_view/" method="post" name="login">
+      {% csrf_token %}
+        <h1>Login</h1>
+        
+        <p align="center">{%if msg%}{{msg}}{%endif%}</p>
+		
+        <fieldset>
+        <label for="stud_id">Student ID:</label>
+        <input type="Number" name="stud_id" id="stud_id" placeholder="e.g. 17351" min="10000" max="99999" required="required"></input>
+          
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" placeholder="your password" required="required">
+          
+        </fieldset>
+       
+        <button type="submit">Login</button>
+      </form>
+{%endblock%}
+

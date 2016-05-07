@@ -1,0 +1,62 @@
+{%extends "base.html"%}
+
+{%block heading%}
+You are logged in successfully!
+{%endblock%}
+
+	{%block home%}
+	
+	<a href="/assgn/stud_auth_view/"><button style="width:15%"> Home</button></a></p>
+	
+	{%endblock%}
+
+{%block content%}
+<form action="/assgn/assgn_page/" method="POST">
+<h2>Hi, {{uname.fname}} {{uname.lname}}</h2> 
+<br/>
+
+{%csrf_token%}
+Select a subject to make submissions:
+<select name="subject">
+{%for subj in subjList%}
+<option value="{{subj.subj_id}}">{{subj.subj_id}}</option>
+{%endfor%}
+</select>
+<input type="submit" value="submit">
+</form>
+{%endblock%}
+
+{%block heading2%}
+Assignments and marks
+{%endblock%}
+
+{%block content2%}
+
+{%if assgnAnsList%}
+<table>
+<tr>
+	<th>Subject</th>
+	<th>Assgn ID</th>
+	<th>Marks</th>
+	<th>Submitted on</th>
+</tr>
+
+{%for assgn in assgnAnsList%}
+<tr>
+	<td>{{assgn.assgn_id.subj_id.subj_id}}</td>
+	<td>{{assgn.assgn_id.assgn_id}}</td>
+	<td>{%if assgn.marks != -1 %} {{assgn.marks}} {%endif%} 
+		{%if assgn.marks == -1 %} Not yet evaluated {%endif%}</td>
+	<td>{{assgn.sub_date}}</td>
+</tr>
+{%endfor%}
+
+</table>
+
+{%else%}
+<h3 style="color:#9fdf9f">(No submitted assignments as of now)</h3>
+{%endif%}
+
+
+
+{%endblock%}

@@ -1,0 +1,22 @@
+{%extends "base.html"%}
+
+{%block heading%}
+You are logged in successfully!
+{%endblock%}
+
+{%block content%}
+<form action="/assgn/selected_subj/" method="POST">
+<h2> Welcome, Professor {{uname.lname}}! </h2>
+<h3>Select a course to proceed</h3>
+
+	{%csrf_token%}
+	
+	<select name="subject">
+		{%for subj in subjList%}
+		<option value="{{subj.subj_id}}">{{subj.subj_id}}</option>
+		{%endfor%}
+	</select>
+	
+	<input type="submit" value="submit">
+</form>
+{%endblock%}

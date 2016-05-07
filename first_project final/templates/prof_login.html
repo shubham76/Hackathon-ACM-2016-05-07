@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{%block logout%}
+<p align="right">
+{%endblock%}
+
+{%block heading%}
+Professor Login
+{%endblock%}
+
+{%block content%}
+<form action="/assgn/prof_auth_view/" method="POST">
+{% csrf_token %}
+<p align="center">{%if msg%}{{msg}}{%endif%}</p>
+<label for="prof_ID">Prof ID: </label>
+<input type="number" name="prof_id"  id="prof_ID" placeholder="e.g. 2" min="0" max="100"></input>
+<br/>
+<label for="password">Password: </label>
+<input type="password" name="password" value="" id="password" placeholder="your password"></input>
+<input type="submit" value="login"/>    
+</form>
+{%endblock%}

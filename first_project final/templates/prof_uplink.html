@@ -1,0 +1,44 @@
+{%extends "base.html"%}
+
+{%block heading%}
+View list of students who have submitted the assignment:
+{%endblock%}
+
+
+
+{%block home%}
+	
+	<a href="/assgn/prof_auth_view/"><button style="width:15%"> Home</button></a></p>
+	
+	{%endblock%}
+
+{%block content%}
+		
+<form action="/assgn/stud_submitted/" method="POST">
+	{%csrf_token%}
+	Assignment ID:
+	<select name="assgn">
+		{%for assgn in assgnList%}
+		<option value="{{assgn.assgn_id}}">{{assgn.assgn_id}}</option>
+		{%endfor%}
+	</select>
+	
+	<input type="submit" value="view">
+</form>
+<br/>
+{%endblock%}
+
+{%block heading2%}
+Release a new assignment for {{subj_id}}:
+{%endblock%}
+
+{%block content2%}
+<form action="/assgn/upload_success/" method="POST" enctype="multipart/form-data">
+	{%csrf_token%}
+	<!--input type="hidden" name="subj_id" value="{{subj_id}}"-->
+	{{form.as_p}}
+	due_on: <input type="date" name="due_on">
+	<input type="submit" value="done" />
+</form>
+
+{%endblock%}
